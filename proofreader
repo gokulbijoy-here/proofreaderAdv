@@ -1,0 +1,46 @@
+import cv2
+import pytesseract
+from spellchecker import SpellChecker
+
+def preprocess_image(image_path):
+    # Image preprocessing code (same as shown before)
+
+def extract_text_from_image(image):
+    # Text extraction code (same as shown before)
+
+def proofread_text(text_file_path, image_text):
+    # Read the text from the file
+    with open(text_file_path, 'r') as file:
+        text = file.read()
+
+    # Tokenize the text for word-level comparison
+    text_tokens = text.split()
+    image_text_tokens = image_text.split()
+
+    # Initialize the spell checker
+    spell = SpellChecker()
+
+    # Identify spelling errors in the image text compared to the file text
+    spelling_errors = spell.unknown(image_text_tokens)
+
+    return spelling_errors
+
+def main():
+    image_path = 'path_to_your_image.jpg'
+    text_file_path = 'path_to_your_text_file.txt'
+
+    # Preprocess the image and extract text
+    processed_image = preprocess_image(image_path)
+    image_text = extract_text_from_image(processed_image)
+
+    # Proofread the text and get spelling errors
+    spelling_errors = proofread_text(text_file_path, image_text)
+
+    if spelling_errors:
+        print("Spelling Errors:")
+        print(spelling_errors)
+    else:
+        print("No spelling errors found.")
+
+if __name__ == "__main__":
+    main()
