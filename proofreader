@@ -26,8 +26,8 @@ def proofread_text(text_file_path, image_text):
     return spelling_errors
 
 def main():
-    image_path = 'path_to_your_image.jpg'
-    text_file_path = 'path_to_your_text_file.txt'
+    image_path = input('image path:')
+    text_file_path = input('text file path:')
 
     # Preprocess the image and extract text
     processed_image = preprocess_image(image_path)
